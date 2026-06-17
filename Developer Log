@@ -1,0 +1,29 @@
+17/06/26
+Now that I have a reliable way to inject code into existing methods and logic, I can start to work on a base level of
+initialization for all my classes and the lifecycle manager. There are, however, a few things still left to tackle on
+the initial "checkpoint" of the project.
+
+On the code injection side, I need to check what are the possible issues during game launch/quit/launch, since right
+now there is no clear way for me to "de-inject" code I injected. I'm already considering some sort of "change log"
+with old "versions" of methods I overwrote, so that when it comes to it I can revert the changes I did not to alter
+the game in further scenarios. It would also do well to have a safety logic to prevent double injection.
+- "Version" history of logic changes to methods
+- De-injection logic
+- Safeguards to prevent double injection of methods
+
+On the saving/loading side of things, I still have to check the logic behind persistence of game data, and how can I
+attach to that aspect of the game.
+- Saving/Loading hooks
+- Data structure
+- Data integrity safeguards
+
+On the code organization side of things, I need to better organize what each script does. I need to add an "Injection
+Manager" of sorts that deals with versioning and initial code injection or context-related code injection. The
+"Lifecycle Manager" needs to _exists_ and start being aware of what is the current state of the game, as well as start
+to delegate actions to other scripts. I will need an event system or event bus. commands will, for the time being, only
+exist to parse in-game console commands and delegate them accordingly for testing purposes. It will, at some final point
+where the mod is done or commits are tailored for a "release" version of the mod, get removed or cut down to prevent
+some debugging logic only.
+- Injection Manager
+- Lifecycle Manager
+- Event Bus
